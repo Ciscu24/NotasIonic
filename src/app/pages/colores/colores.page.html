@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="this.backButton()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Seleccionar Color</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <ion-item class="azul" (click)="this.seleccionarColor('#4B90FA')" lines="none">
+    <div style="background-color: #4B90FA; width: 100%; height: 100%; border-radius: 10px;"></div>
+  </ion-item>
+  <br>
+  <ion-item class="rojo" (click)="this.seleccionarColor('#FB4435')" lines="none">
+    <div style="background-color: #FB4435; width: 100%; height: 100%; border-radius: 10px;"></div>
+  </ion-item>
+  <br>
+  <ion-item class="naranja" (click)="this.seleccionarColor('#FA8626')" lines="none">
+    <div style="background-color: #FA8626; width: 100%; height: 100%; border-radius: 10px;"></div>
+  </ion-item>
+  <br>
+  <ion-item class="amarillo" (click)="this.seleccionarColor('#C55BDB')" lines="none">
+    <div style="background-color: #C55BDB; width: 100%; height: 100%; border-radius: 10px;"></div>
+  </ion-item>
+  <br>
+  <ion-item class="verde" (click)="this.seleccionarColor('#2CF949')" lines="none">
+    <div style="background-color: #2CF949; width: 100%; height: 100%; border-radius: 10px;"></div>
+  </ion-item>
+  <br>
+  <ion-item class="verde" (click)="this.seleccionarColor('')" style="text-align: center;">Color por defecto</ion-item>
+  
+</ion-content>
