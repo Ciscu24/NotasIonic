@@ -5,6 +5,7 @@ import { Nota } from '../model/nota';
 import { ColoresPage } from '../pages/colores/colores.page';
 import { LoadService } from '../services/load.service';
 import { NotasService } from '../services/notas.service';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-tab2',
@@ -19,7 +20,7 @@ export class Tab2Page {
     private formBuilder:FormBuilder,
     private notasS:NotasService,
     private load:LoadService,
-    public toastController: ToastController,
+    public toastS:ToastService,
     public modalController: ModalController
   ) {
     this.tasks=this.formBuilder.group({
@@ -48,29 +49,13 @@ export class Tab2Page {
       })
       this.color = "";
       this.load.pararLoading();
-      this.presentToast("Nota guardada","primary");
+      this.toastS.presentToast("Nota guardada", "myToast", 2000, "primary");
     })
     .catch((err)=>{
       this.load.pararLoading();
-      this.presentToast("Error guardando nota","danger");
+      this.toastS.presentToast("Error al guardar la nota", "myToast", 2000, "danger");
       console.log(err);
     })
-  }
-
-  /**
-   * Funcion que muestra un Toast
-   * @param msg el mensaje del Toast
-   * @param col el color del Toast
-   */
-  async presentToast(msg:string,col:string) {
-    const toast = await this.toastController.create({
-      message: msg,
-      cssClass: "myToast",
-      duration: 2000,
-      position:"bottom",
-      color: col
-    });
-    toast.present();
   }
 
   /**

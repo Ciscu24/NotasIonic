@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Notas</ion-title>
+    <ion-title>{{ "NOTAS" | translate }}</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
@@ -9,11 +9,13 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-searchbar placeholder="Buscar nota..." (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar placeholder='{{ "BUSCADOR" | translate }}' (ionInput)="getItems($event)"></ion-searchbar>
 
   <ion-refresher slot="fixed" (ionRefresh)="this.cargaDatos($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
+  <!--<ngx-qrcode [qrc-element-type]="elementType" [qrc-value] = "qrData"></ngx-qrcode>-->
 
   <ion-list>
     <ion-item-sliding *ngFor="let nota of this.listaNotasBusqueda;let i=index">

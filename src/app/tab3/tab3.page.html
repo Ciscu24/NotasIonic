@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Configuración
+      {{ "CONFIGURACION" | translate }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +11,7 @@
   <ion-list>
     <ion-item-group>
       <ion-item-divider>
-        <ion-label>Usuario</ion-label>
+        <ion-label>{{ "USUARIO" | translate }}</ion-label>
       </ion-item-divider>
 
       <ion-item>
@@ -19,31 +19,31 @@
           <img [src]="usuario.avatar">
         </ion-avatar>
         <ion-label>{{usuario.name}}</ion-label>
-        <ion-button (click)="this.logout()">Cerrar Sesion</ion-button>
+        <ion-button (click)="this.logout()">{{ "CERRAR_SESION" | translate }}</ion-button>
       </ion-item>
 
     </ion-item-group>
     
     <ion-item-group>
       <ion-item-divider>
-        <ion-label>General</ion-label>
+        <ion-label>{{ "GENERAL" | translate }}</ion-label>
       </ion-item-divider>
 
       <ion-item>
-        <ion-label>Tamaño de fuente</ion-label>
-        <ion-select okText="Ok" cancelText="Cancelar" [(ngModel)]="this.tamanoFuente" (ionChange)="this.guardarTamanoFuente()">
-          <ion-select-option value="Pequeno">Pequeño</ion-select-option>
-          <ion-select-option value="Mediano">Mediano</ion-select-option>
-          <ion-select-option value="Grande">Grande</ion-select-option>
+        <ion-label>{{ "TAMANO_FUENTE" | translate }}</ion-label>
+        <ion-select okText="Ok" cancelText='{{ "CANCELAR" | translate }}' [(ngModel)]="this.tamanoFuente" (ionChange)="this.guardarTamanoFuente()">
+          <ion-select-option value="Pequeno">{{ "PEQUENO" | translate }}</ion-select-option>
+          <ion-select-option value="Mediano">{{ "MEDIANO" | translate }}</ion-select-option>
+          <ion-select-option value="Grande">{{ "GRANDE" | translate }}</ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-label>Pantalla predeterminada</ion-label>
-        <ion-select okText="Ok" cancelText="Cancelar" [(ngModel)]="this.pantallaPredeterm" (ionChange)="this.guardarPantallaPredeterm()"> 
-          <ion-select-option value="Notas">Notas</ion-select-option>
-          <ion-select-option value="Añadir">Añadir</ion-select-option>
-          <ion-select-option value="Configuración">Configuración</ion-select-option>
+        <ion-label>{{ "PANTALLA_PREDETERMINADA" | translate }}</ion-label>
+        <ion-select okText="Ok" cancelText='{{ "CANCELAR" | translate }}' [(ngModel)]="this.pantallaPredeterm" (ionChange)="this.guardarPantallaPredeterm()"> 
+          <ion-select-option value="Notas">{{ "NOTAS" | translate }}</ion-select-option>
+          <ion-select-option value="Añadir">{{ "ANADIR" | translate }}</ion-select-option>
+          <ion-select-option value="Configuración">{{ "CONFIGURACION" | translate }}</ion-select-option>
         </ion-select>
       </ion-item>
 
@@ -51,15 +51,15 @@
 
     <ion-item-group>
       <ion-item-divider>
-        <ion-label>Ordenar</ion-label>
+        <ion-label>{{ "ORDENAR" | translate }}</ion-label>
       </ion-item-divider>
 
       <ion-item>
-        <ion-label>Criterio de ordenación</ion-label>
-        <ion-select value="Titulo" okText="Ok" cancelText="Cancelar" [(ngModel)]="this.ordenacion" (ionChange)="this.guardarOrdenacion()">
-          <ion-select-option value="Titulo">Por título</ion-select-option>
-          <ion-select-option value="Descripcion">Por descripción</ion-select-option>
-          <ion-select-option value="Ultima">Ultima añadida</ion-select-option>
+        <ion-label>{{ "CRITERIO_ORDENACION" | translate }}</ion-label>
+        <ion-select value="Titulo" okText="Ok" cancelText='{{ "CANCELAR" | translate }}' [(ngModel)]="this.ordenacion" (ionChange)="this.guardarOrdenacion()">
+          <ion-select-option value="Titulo">{{ "POR_TITULO" | translate }}</ion-select-option>
+          <ion-select-option value="Descripcion">{{ "POR_DESCRIPCION" | translate }}</ion-select-option>
+          <ion-select-option value="Ultima">{{ "ULTIMA_ANADIDA" | translate }}</ion-select-option>
         </ion-select>
       </ion-item>
       
@@ -67,15 +67,15 @@
 
     <ion-item-group>
       <ion-item-divider>
-        <ion-label>Copias</ion-label>
+        <ion-label>{{ "COPIAS" | translate }}</ion-label>
       </ion-item-divider>
 
       <ion-item href="">
-        <ion-label>Guardar notas</ion-label>
+        <ion-label>{{ "GUARDAR_NOTAS" | translate }}</ion-label>
       </ion-item>
 
       <ion-item>
-        <ion-label>Guardar automático</ion-label>
+        <ion-label>{{ "GUARDAR_AUTO" | translate }}</ion-label>
         <ion-checkbox checked="true" [(ngModel)]="this.guardarAutomatico" (ionChange)="this.guardarGuardarAutomatico()"></ion-checkbox>
       </ion-item>
       
@@ -83,19 +83,19 @@
 
     <ion-item-group>
       <ion-item-divider>
-        <ion-label>Acerca de</ion-label>
+        <ion-label>{{ "ACERCA_DE" | translate }}</ion-label>
       </ion-item-divider>
 
       <ion-item>
         <ion-label>
-            <h2>Versión</h2>
+            <h2>{{ "VERSION" | translate }}</h2>
             <ion-note>1.0.0</ion-note>
         </ion-label>
       </ion-item>
 
       <ion-item>
         <ion-label>
-            <h2>Creador</h2>
+            <h2>{{ "CREADOR" | translate }}</h2>
             <ion-note>Francisco García Córdoba</ion-note>
         </ion-label>
       </ion-item>

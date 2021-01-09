@@ -7,6 +7,9 @@ import { AuthService } from './services/auth.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Flashlight } from '@ionic-native/flashlight/ngx';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
+import { TranslateService } from '@ngx-translate/core';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
+import { ToastService } from './services/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +21,7 @@ export class AppComponent {
   darkMode:any = "light";
   darkModeBoolean:boolean = false;
   linterna:boolean = false;
+  idioma:string = "es";
   
   constructor(
     private platform: Platform,
@@ -27,11 +31,18 @@ export class AppComponent {
     private menu: MenuController,
     private nativeStorage: NativeStorage,
     private flashlight: Flashlight,
-    public toastController: ToastController,
-    private geolocation:Geolocation
+    private geolocation:Geolocation,
+    private translateService: TranslateService,
+    private qrScanner: QRScanner,
+    private toastS:ToastService
   ) {
     this.initializeApp();
     this.cargarDarkMode();
+    this.cargarIdioma();
+
+    //Idioma
+    this.translateService.setDefaultLang('es');
+    this.translateService.use('es');
   }
 
   initializeApp() {
@@ -95,22 +106,6 @@ export class AppComponent {
   }
 
   /**
-   * Funcion que muestra un Toast
-   * @param msg el mensaje del Toast
-   * @param col el color del Toast
-   */
-  async presentToast(msg:string,col:string) {
-    const toast = await this.toastController.create({
-      message: msg,
-      cssClass: "myToast",
-      duration: 2000,
-      position:"bottom",
-      color: col
-    });
-    toast.present();
-  }
-
-  /**
    * Funcion que muestra tu geolocalizacion usando el plugin de Geolocation de Ionic
    */
   public getGeolocation(){
@@ -118,7 +113,54 @@ export class AppComponent {
     .then((geoposition:Geoposition)=>{
       let lat:number = geoposition.coords.latitude;
       let lon:number = geoposition.coords.longitude;
-      this.presentToast("Latitud: "+lat+", Longitud: "+lon, "primary");
+      this.toastS.presentToast("Latitud: "+lat+", Longitud: "+lon, "myToast", 2000, "primary");
+    })
+  }
+
+  /**
+   * Funcion que cambia el idioma y lo guarda en Native Storage
+   */
+  public async cambiarIdioma(){
+    await this.nativeStorage.setItem("idioma", this.idioma);
+    console.log(this.idioma);
+    if(this.idioma=="es"){
+      this.translateService.use("es");
+    }else{
+      this.translateService.use("en");
+    }
+  }
+
+  /**
+   * Carga el idioma de la aplicacion a traves del Native Storage
+   */
+  public async cargarIdioma(){
+    this.idioma = await this.nativeStorage.getItem("idioma");
+    this.translateService.use(this.idioma);
+  }
+
+  public cargarQR(){
+    // Opcionalmente solicitamos los permisos antes de hacer nada
+    this.qrScanner.prepare()
+    .then((status: QRScannerStatus) => {
+      if (status.authorized) {
+        // Los permisos están concedidos
+        // Comenzamos a escanear
+        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+          console.log('Scanned something', text);
+          this.qrScanner.hide(); // Ocultamos el preview
+          scanSub.unsubscribe(); // Dejamos de Scannear
+        });
+      } else if (status.denied) {
+        // Los permisos de la cámara están denegados permanentemente
+        // Para poder volver a usar la cámara, el usaurio tendrá que abrir los ajustes de persmisos
+        // Y dar permisos desde allí con la función "openSettings"
+      } else {
+        // Los permisos han sido denegados, pero no permanentemente. Si los solicitas otra vez volverá a aparecer la solicitud.
+      }
+    })
+    .catch((e: any) => {
+      console.log('Error is', e);
+      this.toastS.presentToast("Error is" + e, "myToast", 2000, "primary");
     })
   }
 

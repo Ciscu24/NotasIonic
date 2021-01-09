@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ColoresPageRoutingModule } from './colores-routing.module';
 
 import { ColoresPage } from './colores.page';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ColoresPageRoutingModule
+    ColoresPageRoutingModule,
+    TranslateModule
   ],
   declarations: [ColoresPage]
 })

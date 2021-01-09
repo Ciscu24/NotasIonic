@@ -1,0 +1,56 @@
+{
+    "HOLA": "Hola",
+    "BIENVENIDO": "Bienvenido",
+    "SALUDO": "Hola, {{ value }}",
+
+    "MENU": "Menu",
+    "LINTERNA": "Lantern",
+    "MODO_OSCURO": "Dark mode",
+    "GEOLOCALIZACION": "Geolocation",
+    "QR": "QR code",
+    "CAMBIAR_IDIOMA": "Change language",
+    "ESPANOL": "Spanish",
+    "INGLES": "English",
+
+    "NOTAS": "Notes",
+    "ANADIR": "Add",
+    "CONFIGURACION": "Settings",
+
+    "BUSCADOR": "Search note...",
+
+    "BORRAR": "Delete Note",
+    "BORRAR_TEXTO": "Are you sure to delete note?",
+    "CONFIRMAR": "Confirm",
+    "CANCELAR": "Cancel",
+
+    "ANADIR_NOTA": "Add Note",
+    "TITULO": "Title",
+    "DESCRIPCION": "Description",
+    "SELECCION_COLOR": "Select a color for the note...",
+    
+    "SELECCIONAR_COLOR_TITULO": "Select Color",
+    "COLOR_DEFAULT": "Default color",
+
+    "CERRAR_SESION": "Log Out",
+    "USUARIO": "User",
+    "GENERAL": "General",
+    "TAMANO_FUENTE": "Font size",
+    "PEQUENO": "Little",
+    "MEDIANO": "Medium",
+    "GRANDE": "Big",
+    "PANTALLA_PREDETERMINADA": "Default screen",
+    "ORDENAR": "Order",
+    "CRITERIO_ORDENACION": "Sort order",
+    "POR_TITULO": "By title",
+    "POR_DESCRIPCION": "By description",
+    "ULTIMA_ANADIDA": "Last added",
+    "COPIAS": "Save",
+    "GUARDAR_NOTAS": "Save notes",
+    "GUARDAR_AUTO": "Automatic save",
+    "ACERCA_DE": "About",
+    "VERSION": "Version",
+    "CREADOR": "Creator",
+
+    "EDITAR_NOTA": "Edit Note",
+    "CAMBIAR_NOTA": "Change Note"
+}

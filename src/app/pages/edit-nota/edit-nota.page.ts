@@ -4,6 +4,7 @@ import { LoadingController, ModalController, ToastController } from '@ionic/angu
 import { Nota } from 'src/app/model/nota';
 import { LoadService } from 'src/app/services/load.service';
 import { NotasService } from 'src/app/services/notas.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { ColoresPage } from '../colores/colores.page';
 
 @Component({
@@ -22,7 +23,7 @@ export class EditNotaPage{
     private formBuilder:FormBuilder,
     private notasS:NotasService,
     private load:LoadService,
-    public toastController: ToastController,
+    public toastS:ToastService,
     private modalController:ModalController
   ) {
     this.tasks=this.formBuilder.group({
@@ -51,30 +52,14 @@ export class EditNotaPage{
     this.notasS.actualizaNota(this.nota.id,data)
     .then((respuesta)=>{
       this.load.pararLoading();
-      this.presentToast("Nota guardada","primary");
+      this.toastS.presentToast("Nota guardada", "myToast", 2000, "primary");
       this.modalController.dismiss();
     })
     .catch((err)=>{
       this.load.pararLoading();
-      this.presentToast("Error guardando nota","danger");
+      this.toastS.presentToast("Error al guardar la nota", "myToast", 2000, "danger");
       console.log(err);
     })
-  }
-
-  /**
-   * Funcion que muestra un Toast
-   * @param msg el mensaje del Toast
-   * @param col el color del Toast
-   */
-  async presentToast(msg:string,col:string) {
-    const toast = await this.toastController.create({
-      message: msg,
-      cssClass: "myToast",
-      duration: 2000,
-      position:"bottom",
-      color: col
-    });
-    toast.present();
   }
 
   public backButton(){

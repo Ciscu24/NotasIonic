@@ -1,0 +1,56 @@
+{
+    "HOLA": "Hola",
+    "BIENVENIDO": "Bienvenido",
+    "SALUDO": "Hola, {{ value }}",
+
+    "MENU": "Menú",
+    "LINTERNA": "Linterna",
+    "MODO_OSCURO": "Modo oscuro",
+    "GEOLOCALIZACION": "Geolocalización",
+    "QR": "Código QR",
+    "CAMBIAR_IDIOMA": "Cambiar idioma",
+    "ESPANOL": "Español",
+    "INGLES": "Inglés",
+
+    "NOTAS": "Notas",
+    "ANADIR": "Añadir",
+    "CONFIGURACION": "Configuración",
+
+    "BUSCADOR": "Buscar nota...",
+
+    "BORRAR": "Borrar Nota",
+    "BORRAR_TEXTO": "Esta usted seguro de borrar la nota",
+    "CONFIRMAR": "Confirmar",
+    "CANCELAR": "Cancelar",
+
+    "ANADIR_NOTA": "Añadir Nota",
+    "TITULO": "Título",
+    "DESCRIPCION": "Descripción",
+    "SELECCION_COLOR": "Selecciona un color para la nota...",
+    
+    "SELECCIONAR_COLOR_TITULO": "Seleccionar Color",
+    "COLOR_DEFAULT": "Color por defecto",
+
+    "CERRAR_SESION": "Cerrar Sesión",
+    "USUARIO": "Usuario",
+    "GENERAL": "General",
+    "TAMANO_FUENTE": "Tamaño de fuente",
+    "PEQUENO": "Pequeño",
+    "MEDIANO": "Mediano",
+    "GRANDE": "Grande",
+    "PANTALLA_PREDETERMINADA": "Pantalla predeterminada",
+    "ORDENAR": "Ordenar",
+    "CRITERIO_ORDENACION": "Criterio de ordenación",
+    "POR_TITULO": "Por título",
+    "POR_DESCRIPCION": "Por descripción",
+    "ULTIMA_ANADIDA": "Última añadida",
+    "COPIAS": "Copias",
+    "GUARDAR_NOTAS": "Guardar notas",
+    "GUARDAR_AUTO": "Guardado automático",
+    "ACERCA_DE": "Acerca de",
+    "VERSION": "Versión",
+    "CREADOR": "Creador",
+
+    "EDITAR_NOTA": "Editar Nota",
+    "CAMBIAR_NOTA": "Cambiar Nota"
+}

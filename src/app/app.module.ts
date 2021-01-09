@@ -22,13 +22,30 @@ import { ColoresPage } from './pages/colores/colores.page';
 import { Flashlight } from '@ionic-native/flashlight/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
+import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { QRScanner } from '@ionic-native/qr-scanner/ngx';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   declarations: [AppComponent,EditNotaPage, ColoresPage],
   entryComponents: [EditNotaPage, ColoresPage],
   imports: [
     BrowserModule, 
     ReactiveFormsModule,
+    HttpClientModule,
     IonicModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AppRoutingModule,
@@ -44,6 +61,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     LoadService,
     Flashlight,
     Geolocation,
+    QRScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

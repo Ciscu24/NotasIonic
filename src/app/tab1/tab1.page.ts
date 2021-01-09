@@ -7,6 +7,9 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { LoadService } from '../services/load.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -19,10 +22,21 @@ export class Tab1Page{
   public listaNotas = [];
   public listaNotasBusqueda = [];
 
+  qrData = "www.google.es";
+  elementType: 'canvas';
+
+  titulo:string;
+  descripcion:string;
+  confirmar:string;
+  cancelar:string;
+
   constructor(private notasS: NotasService,
     private modalController:ModalController,
     private load:LoadService,
-    public alertController: AlertController) { }
+    public alertController: AlertController,
+    public translate:TranslateService) { }
+
+    
 
 
   ionViewWillEnter(){
@@ -112,18 +126,31 @@ export class Tab1Page{
    * @param id El id de la nota que deseamos borrar
    */
   async alertBorrarNota(id:any) {
+    this.translate.get('BORRAR').subscribe((res:string)=>{
+      this.titulo=res;
+    });
+    this.translate.get('BORRAR_TEXTO').subscribe((res:string)=>{
+      this.descripcion=res;
+    });
+    this.translate.get('CONFIRMAR').subscribe((res:string)=>{
+      this.confirmar=res;
+    });
+    this.translate.get('CANCELAR').subscribe((res:string)=>{
+      this.cancelar=res;
+    });
+
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Borrar Nota',
-      message: 'Esta usted seguro de <strong>borrar la nota</strong>',
+      header: this.titulo,
+      message: this.descripcion,
       buttons: [
         {
-          text: 'Cancelar',
+          text: this.cancelar,
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {}
         }, {
-          text: 'Confirmar',
+          text: this.confirmar,
           handler: () => {
             this.borraNota(id);
           }

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="" (click)="this.backButton()"></ion-back-button>
     </ion-buttons>
-    <ion-title>Seleccionar Color</ion-title>
+    <ion-title>{{ "SELECCIONAR_COLOR_TITULO" | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -29,6 +29,6 @@
     <div style="background-color: #2CF949; width: 100%; height: 100%; border-radius: 10px;"></div>
   </ion-item>
   <br>
-  <ion-item class="verde" (click)="this.seleccionarColor('')" style="text-align: center;">Color por defecto</ion-item>
+  <ion-item class="verde" (click)="this.seleccionarColor('')" style="text-align: center;">{{ "COLOR_DEFAULT" | translate }}</ion-item>
   
 </ion-content>

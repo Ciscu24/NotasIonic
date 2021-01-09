@@ -6,24 +6,30 @@ import { LoadingController } from '@ionic/angular';
 })
 export class LoadService {
 
+  loadingActivo:boolean = false;
+
   constructor(public loadingController: LoadingController) { }
 
   /**
    * Funcion que ejecuta el Loading
    */
   public async cargarLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: '',
-      spinner:'crescent'
-    });
-    await loading.present();
+    if(!this.loadingActivo){
+      const loading = await this.loadingController.create({
+        cssClass: 'my-custom-class',
+        message: '',
+        spinner:'crescent'
+      });
+      await loading.present();
+      this.loadingActivo = true;
+    }
   }
 
   /**
    * Funcion que detiene el Loading
    */
-  public pararLoading(){
-    this.loadingController.dismiss();
+  public async pararLoading(){
+    await this.loadingController.dismiss();
+    this.loadingActivo = false;
   }
 }

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="" (click)="this.backButton()"></ion-back-button>
     </ion-buttons>
-    <ion-title>Editar Nota</ion-title>
+    <ion-title>{{ "EDITAR_NOTA" | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
     <ion-item>
       <ion-input type="text" 
       formControlName="title"
-      placeholder="Título"></ion-input>
+      placeholder='{{ "TITULO" | translate }}'></ion-input>
     </ion-item>
 
     <br>
@@ -23,7 +23,7 @@
     <ion-item>
       <ion-textarea 
       formControlName="description"
-      placeholder="Descripción"
+      placeholder='{{ "DESCRIPCION" | translate }}'
       autocapitalize="true"
       auto-grow="true"></ion-textarea>
     </ion-item>
@@ -32,7 +32,7 @@
 
     <ion-item *ngIf="!this.nota.color" (click)="this.seleccionarColor()">
       <ion-icon slot="start" name="color-palette-outline"></ion-icon>
-      <ion-label>Selecciona un color para la nota...</ion-label>
+      <ion-label>{{ "SELECCION_COLOR" | translate }}</ion-label>
     </ion-item>
 
     <ion-item *ngIf="this.nota.color" (click)="this.seleccionarColor()">
@@ -42,7 +42,7 @@
     <br>
 
     <div style="text-align: right;">
-      <ion-button shape="round" color="primary" fill="outline" type="submit" [disabled]="!tasks.valid">Cambiar Nota</ion-button>
+      <ion-button shape="round" color="primary" fill="outline" type="submit" [disabled]="!tasks.valid">{{ "CAMBIAR_NOTA" | translate }}</ion-button>
     </div>
   </form>
 </ion-content>
