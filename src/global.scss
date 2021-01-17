@@ -34,3 +34,16 @@
 .myToast {
     transform: translateY(-70px) !important;
 }
+
+ion-app{
+    opacity: 1;
+    background: var(--ion-background-color)!important;
+}
+
+ion-app.cameraView{
+    opacity: 0;
+}
+ion-app.cameraview{
+    background: transparent !important;
+    background-size: 100% 100% !important;
+}

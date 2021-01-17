@@ -145,17 +145,23 @@ export class AppComponent {
       if (status.authorized) {
         // Los permisos están concedidos
         // Comenzamos a escanear
+        this.qrScanner.show();
+        window.document.querySelector('ion-app').classList.add('cameraView');
         let scanSub = this.qrScanner.scan().subscribe((text: string) => {
           console.log('Scanned something', text);
+          this.toastS.presentToast(text, "myToast", 2000, "primary");
           this.qrScanner.hide(); // Ocultamos el preview
           scanSub.unsubscribe(); // Dejamos de Scannear
-        });
+          window.document.querySelector('ion-app').classList.remove('cameraView');
+        })
       } else if (status.denied) {
         // Los permisos de la cámara están denegados permanentemente
         // Para poder volver a usar la cámara, el usaurio tendrá que abrir los ajustes de persmisos
         // Y dar permisos desde allí con la función "openSettings"
+        this.toastS.presentToast("Permisos denegados", "myToast", 2000, "primary");
       } else {
         // Los permisos han sido denegados, pero no permanentemente. Si los solicitas otra vez volverá a aparecer la solicitud.
+        this.toastS.presentToast("Permisos denegados", "myToast", 2000, "primary");
       }
     })
     .catch((e: any) => {
